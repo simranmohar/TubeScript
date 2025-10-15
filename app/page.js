@@ -1,8 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export default function Home() {
+  const [topic, setTopic] = useState("");
+
+  console.log("Current topic is:", topic);
   return (
     <main className="container mx-auto min-h-screen flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-lg flex flex-col gap-6">
@@ -15,7 +21,13 @@ export default function Home() {
         
         <div className="grid w-full items-center gap-2">
           <Label htmlFor="video-topic">Your Video Topic</Label>
-          <Input type="text" id="video-topic" placeholder="e.g., The Lost City of Atlantis" />
+          <Input 
+          type="text" 
+          id="video-topic" 
+          placeholder="e.g., The Lost City of Atlantis"
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}  
+           />
         </div>
 
         <Button className="w-full">Generate Script</Button>
